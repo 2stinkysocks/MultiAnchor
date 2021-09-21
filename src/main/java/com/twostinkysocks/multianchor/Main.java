@@ -1,6 +1,5 @@
 package com.twostinkysocks.multianchor;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.data.type.RespawnAnchor;
@@ -11,8 +10,6 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockExplodeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitTask;
 
 import java.util.HashMap;
 
@@ -48,12 +45,12 @@ public class Main extends JavaPlugin implements Listener {
                 private int i = 0;
                 @Override
                 public void run() {
-                    if(this.i >= charges) {
+                    if(i >= charges) {
                         cancelTask();
                     } else {
                         e.getBlock().getWorld().createExplosion(e.getBlock().getLocation(), 5.0F, true, true);
                     }
-                    this.i = this.i + 1;
+                    i++;
                 }
             };
         }
